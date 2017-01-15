@@ -1,26 +1,25 @@
 import React from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native';
+// import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+// import thunk from 'redux-thunk';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    message: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-});
+// import * as reducers from '../reducers';
+import searchReducer from '../reducers/search';
+import WeatherApp from './weatherApp';
+
+// const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+// const reducer = combineReducers(reducers);
+// const store = createStoreWithMiddleware(reducer);
+
+console.log('search:');
+console.log(searchReducer);
+
+const store = createStore(searchReducer);
 
 const App = () =>
-    (<View style={styles.container}>
-      <Text style={styles.message}>Hello World</Text>
-    </View>);
+    (<Provider store={store}>
+      <WeatherApp />
+    </Provider>);
 
 export default App;
