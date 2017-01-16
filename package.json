@@ -12,13 +12,15 @@
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
     "redux-actions": "^1.2.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "remote-redux-devtools": "^0.5.7"
   },
   "devDependencies": {
     "babel-jest": "18.0.0",
     "babel-preset-react-native": "1.9.1",
     "jest": "18.1.0",
-    "react-test-renderer": "15.4.2"
+    "react-test-renderer": "15.4.2",
+    "remote-redux-devtools": "^0.5.7"
   },
   "jest": {
     "preset": "react-native"

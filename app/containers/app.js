@@ -1,4 +1,5 @@
 import React from 'react';
+import devToolsEnhancer from 'remote-redux-devtools';
 // import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -12,10 +13,7 @@ import WeatherApp from './weatherApp';
 // const reducer = combineReducers(reducers);
 // const store = createStoreWithMiddleware(reducer);
 
-console.log('search:');
-console.log(searchReducer);
-
-const store = createStore(searchReducer);
+const store = createStore(searchReducer, devToolsEnhancer());
 
 const App = () =>
     (<Provider store={store}>
