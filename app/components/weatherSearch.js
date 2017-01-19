@@ -17,7 +17,10 @@ const WeatherSearch = (props) => {
           style={styles.searchbox}
           defaultValue={''}
           placeholder={'Enter a City'}
-          onSubmitEditing={event => onComplete(event.nativeEvent.text)}
+          onSubmitEditing={(event) => {
+              onComplete(event.nativeEvent.text);
+              this.value = '';
+          }}
         />
       </View>
       <View style={styles.paddingBelow} />
@@ -25,7 +28,7 @@ const WeatherSearch = (props) => {
 };
 
 WeatherSearch.propTypes = {
-    onComplete: PropTypes.function.isRequired,
+    onComplete: PropTypes.func.isRequired,
 };
 
 export default WeatherSearch;
