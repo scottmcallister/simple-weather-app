@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {
     Text,
     TextInput,
@@ -6,18 +6,26 @@ import {
 } from 'react-native';
 import styles from '../styles';
 
-const WeatherSearch = () =>
-    (<View style={styles.container}>
+const WeatherSearch = (props) => {
+    const { onComplete } = props;
+    return (<View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.message}>Search</Text>
       </View>
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchbox}
-          value={''}
+          defaultValue={''}
+          placeholder={'Enter a City'}
+          onSubmitEditing={event => onComplete(event.nativeEvent.text)}
         />
       </View>
       <View style={styles.paddingBelow} />
     </View>);
+};
+
+WeatherSearch.propTypes = {
+    onComplete: PropTypes.function.isRequired,
+};
 
 export default WeatherSearch;

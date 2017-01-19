@@ -8,8 +8,8 @@ const WeatherApp = (props) => {
     const { state, actions } = props;
     return (
       <WeatherSearch
-        weather={state}
-        {...actions}
+        city={state.city}
+        onComplete={actions.updateSearchTerm}
       />
     );
 };
