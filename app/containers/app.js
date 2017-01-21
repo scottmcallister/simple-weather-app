@@ -4,17 +4,15 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
+import createLogger from 'redux-logger';
 
 // import * as reducers from '../reducers';
 import searchReducer from '../reducers/search';
 import WeatherApp from './weatherApp';
 
-// const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-// const reducer = combineReducers(reducers);
-// const store = createStoreWithMiddleware(reducer);
-
+const logger = createLogger();
 const store = createStore(searchReducer, composeWithDevTools(
-    applyMiddleware(thunk, promise),
+    applyMiddleware(thunk, promise, logger),
 ));
 
 const App = () =>
