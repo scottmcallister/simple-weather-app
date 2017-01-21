@@ -9,7 +9,7 @@ const WeatherApp = (props) => {
     return (
       <WeatherSearch
         city={state.city}
-        onComplete={actions.updateSearchTerm}
+        onComplete={actions.searchByCity}
       />
     );
 };
