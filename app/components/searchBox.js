@@ -1,17 +1,10 @@
 import React, { PropTypes } from 'react';
-import {
-    Text,
-    TextInput,
-    View,
-} from 'react-native';
+import { TextInput, View } from 'react-native';
 import styles from '../styles';
 
-const WeatherSearch = (props) => {
+const SearchBox = (props) => {
     const { onComplete } = props;
-    return (<View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text style={styles.message}>Search</Text>
-      </View>
+    return (
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchbox}
@@ -22,13 +15,11 @@ const WeatherSearch = (props) => {
               this.value = '';
           }}
         />
-      </View>
-      <View style={styles.paddingBelow} />
-    </View>);
+      </View>);
 };
 
-WeatherSearch.propTypes = {
+SearchBox.propTypes = {
     onComplete: PropTypes.func.isRequired,
 };
 
-export default WeatherSearch;
+export default SearchBox;

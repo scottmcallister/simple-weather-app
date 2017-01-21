@@ -1,16 +1,23 @@
 import React, { PropTypes } from 'react';
+import { View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import WeatherSearch from '../components/weatherSearch';
+import WeatherInfo from '../components/weatherInfo';
+import SearchBox from '../components/searchBox';
+import styles from '../styles';
 import * as weatherActions from '../actions';
 
 const WeatherApp = (props) => {
     const { state, actions } = props;
+    const { weatherData } = state;
     return (
-      <WeatherSearch
-        city={state.city}
-        onComplete={actions.searchByCity}
-      />
+      <View style={styles.container}>
+        <WeatherInfo weatherData={weatherData} />
+        <SearchBox
+          onComplete={actions.searchByCity}
+        />
+        <View style={styles.paddingBelow} />
+      </View>
     );
 };
 

@@ -10,9 +10,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: blue,
     },
-    message: {
-        fontSize: 20,
+    weatherInfo: {
         textAlign: 'center',
+        fontSize: 20,
         margin: 10,
         color: white,
     },

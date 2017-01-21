@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 
-// import * as reducers from '../reducers';
 import searchReducer from '../reducers/search';
 import WeatherApp from './weatherApp';
 
