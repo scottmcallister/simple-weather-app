@@ -10,11 +10,11 @@ const WeatherInfo = (props) => {
     return (
       <View style={styles.textContainer}>
         { _.isEmpty(weatherData) ?
-          <Text>Search</Text> :
+          <Text style={styles.weatherInfo}>Search</Text> :
           <View>
-            <Text>{`${name}`}</Text>
-            <Text>{`${utils.toCelsius(main.temp)} °C`}</Text>
-            <Text>{`${weather[0].description}`}</Text>
+            <Text style={styles.weatherInfo}>{`${name}`}</Text>
+            <Text style={styles.weatherInfo}>{`${utils.toCelsius(main.temp)} °C`}</Text>
+            <Text style={styles.weatherInfo}>{`${weather[0].description}`}</Text>
           </View>}
       </View>
     );

@@ -1,10 +1,12 @@
 const utils = {
     toCelsius: (kelvinTemp) => {
-        const celsiusTemp = kelvinTemp - 273.15;
+        let celsiusTemp = kelvinTemp - 273.15;
+        celsiusTemp = Math.round(celsiusTemp);
         return celsiusTemp;
     },
     toFahrenheit: (kelvinTemp) => {
-        const fahrenheitTemp = (kelvinTemp * (9 / 5)) + 459.67;
+        let fahrenheitTemp = (kelvinTemp * (9 / 5)) + 459.67;
+        fahrenheitTemp = Math.round(fahrenheitTemp);
         return fahrenheitTemp;
     },
 };

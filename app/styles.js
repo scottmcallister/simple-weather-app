@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: 10,
         height: 40,
+        marginTop: 50,
         borderColor: gray,
         borderWidth: 1,
         flex: 1,

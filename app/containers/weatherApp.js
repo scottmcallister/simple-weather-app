@@ -12,10 +12,10 @@ const WeatherApp = (props) => {
     const { weatherData } = state;
     return (
       <View style={styles.container}>
-        <WeatherInfo weatherData={weatherData} />
         <SearchBox
           onComplete={actions.searchByCity}
         />
+        <WeatherInfo weatherData={weatherData} />
         <View style={styles.paddingBelow} />
       </View>
     );
