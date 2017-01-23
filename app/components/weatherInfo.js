@@ -5,9 +5,8 @@ import _ from 'lodash';
 import styles from '../styles';
 import utils from '../utils';
 
-const renderContent = (weatherData) => {
-    console.log('renderContent');
-    return (
+const renderContent = weatherData =>
+    (
       <View>
         { _.isEmpty(weatherData) ?
           <Text style={styles.weatherInfo}>{'Search for a location'}</Text>
@@ -20,7 +19,6 @@ const renderContent = (weatherData) => {
         }
       </View>
     );
-};
 
 const renderError = errorMessage =>
     (
@@ -32,7 +30,6 @@ const renderError = errorMessage =>
 const WeatherInfo = (props) => {
     const { weatherData, errorMessage, isLoading } = props;
     const stuff = _.isEmpty(errorMessage) ? renderContent(weatherData) : renderError(errorMessage);
-    console.log('render');
     return (
       <View style={styles.textContainer}>
         { isLoading ?
