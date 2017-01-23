@@ -6,16 +6,16 @@ import styles from '../styles';
 import utils from '../utils';
 
 const renderContent = (weatherData) => {
-    const { name, main, weather } = weatherData;
+    console.log('renderContent');
     return (
       <View>
         { _.isEmpty(weatherData) ?
           <Text style={styles.weatherInfo}>{'Search for a location'}</Text>
           :
           <View>
-            <Text style={styles.weatherInfo}>{`${name}`}</Text>
-            <Text style={styles.weatherInfo}>{`${utils.toCelsius(main.temp)} °C`}</Text>
-            <Text style={styles.weatherInfo}>{`${weather[0].description}`}</Text>
+            <Text style={styles.weatherInfo}>{`${weatherData.name}`}</Text>
+            <Text style={styles.weatherInfo}>{`${utils.toCelsius(weatherData.main.temp)} °C`}</Text>
+            <Text style={styles.weatherInfo}>{`${weatherData.weather[0].description}`}</Text>
           </View>
         }
       </View>
@@ -31,12 +31,13 @@ const renderError = errorMessage =>
 
 const WeatherInfo = (props) => {
     const { weatherData, errorMessage, isLoading } = props;
-    const content = _.isNull(errorMessage) ? renderContent(weatherData) : renderError(errorMessage);
+    const stuff = _.isEmpty(errorMessage) ? renderContent(weatherData) : renderError(errorMessage);
+    console.log('render');
     return (
       <View style={styles.textContainer}>
         { isLoading ?
           <Progress.Circle size={30} indeterminate /> :
-          content}
+          stuff}
       </View>
     );
 };

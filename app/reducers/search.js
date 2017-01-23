@@ -2,6 +2,7 @@ import {
     UPDATE_SEARCH_TERM,
     UPDATE_WEATHER_DATA,
     SET_ERROR_MESSAGE,
+    SET_IS_LOADING,
 } from '../actions';
 
 const initialState = {
@@ -26,6 +27,11 @@ const searchReducer = (state = initialState, action = {}) => {
     case SET_ERROR_MESSAGE: {
         return Object.assign({}, state, {
             errorMessage: action.errorMessage,
+        });
+    }
+    case SET_IS_LOADING: {
+        return Object.assign({}, state, {
+            isLoading: action.isLoading,
         });
     }
     default:

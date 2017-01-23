@@ -9,13 +9,15 @@ import * as weatherActions from '../actions';
 
 const WeatherApp = (props) => {
     const { state, actions } = props;
-    const { weatherData } = state;
+    const { weatherData, errorMessage, isLoading } = state;
     return (
       <View style={styles.container}>
-        <SearchBox
-          onComplete={actions.searchByCity}
+        <SearchBox onComplete={actions.searchByCity} />
+        <WeatherInfo
+          weatherData={weatherData}
+          errorMessage={errorMessage}
+          isLoading={isLoading}
         />
-        <WeatherInfo weatherData={weatherData} />
         <View style={styles.paddingBelow} />
       </View>
     );

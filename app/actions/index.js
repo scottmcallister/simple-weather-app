@@ -5,6 +5,7 @@ import config from '../../config';
 export const UPDATE_SEARCH_TERM = 'UPDATE_SEARCH_TERM';
 export const UPDATE_WEATHER_DATA = 'UPDATE_WEATHER_DATA';
 export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
+export const SET_IS_LOADING = 'SET_IS_LOADING';
 
 /**
  * updateSearchTerm - set new search term
@@ -30,6 +31,11 @@ export function updateWeatherData(weatherData) {
     };
 }
 
+/**
+ * setErrorMessage - change or show error message
+ * @param {object} errorMessage - message to display
+ * @return {object} Action
+ */
 export function setErrorMessage(errorMessage) {
     return {
         type: SET_ERROR_MESSAGE,
@@ -37,13 +43,32 @@ export function setErrorMessage(errorMessage) {
     };
 }
 
+/**
+ * setIsLoading - show or hide loading spinner
+ * @param {boolean} isLoading
+ * @return {object} Action
+ */
+export function setIsLoading(isLoading) {
+    return {
+        type: SET_IS_LOADING,
+        isLoading,
+    };
+}
+
 export function searchByCity(searchTerm) {
-    const { appid, url } = config;
-    return fetch(`${url}?q=${searchTerm}&appid=${appid}`)
-        .then(response => response.json())
-        .then(data => updateWeatherData(data))
-        .catch(() => {
-            updateWeatherData({});
-            setErrorMessage(`Could not fetch weather for ${searchTerm}`);
-        });
+    return (dispatch) => {
+        const { appid, url } = config;
+        dispatch(setIsLoading(true));
+        return fetch(`${url}?q=${searchTerm}&appid=${appid}`)
+            .then(response => response.json())
+            .then((data) => {
+                dispatch(setErrorMessage(''));
+                dispatch(setIsLoading(false));
+                dispatch(updateWeatherData(data));
+            })
+            .catch(() => {
+                dispatch(updateWeatherData({}));
+                setErrorMessage(`Could not fetch weather for ${searchTerm}`);
+            });
+    };
 }
