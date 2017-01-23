@@ -8,6 +8,7 @@ const initialState = {
     city: '',
     weatherData: {},
     errorMessage: '',
+    isLoading: false,
 };
 
 const searchReducer = (state = initialState, action = {}) => {

@@ -37,7 +37,6 @@ export function setErrorMessage(errorMessage) {
     };
 }
 
-
 export function searchByCity(searchTerm) {
     const { appid, url } = config;
     return fetch(`${url}?q=${searchTerm}&appid=${appid}`)
