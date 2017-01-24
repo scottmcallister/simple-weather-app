@@ -23,7 +23,7 @@ const renderContent = weatherData =>
 const renderError = errorMessage =>
     (
       <View style={styles.errorContainer}>
-        <Text style={styles.weatherInfo}>{errorMessage}</Text>
+        <Text style={styles.errorMessage}>{errorMessage}</Text>
       </View>
     );
 

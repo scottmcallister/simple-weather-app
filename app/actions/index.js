@@ -68,7 +68,25 @@ export function searchByCity(searchTerm) {
             })
             .catch(() => {
                 dispatch(updateWeatherData({}));
-                setErrorMessage(`Could not fetch weather for ${searchTerm}`);
+                dispatch(setErrorMessage(`Could not fetch weather for ${searchTerm}`));
+            });
+    };
+}
+
+export function searchByCoordinates(latitude, longitude) {
+    return (dispatch) => {
+        const { appid, url } = config;
+        dispatch(setIsLoading(true));
+        return fetch(`${url}?lat=${latitude}&lon=${longitude}&appid=${appid}`)
+            .then(response => response.json())
+            .then((data) => {
+                dispatch(setErrorMessage(''));
+                dispatch(setIsLoading(false));
+                dispatch(updateWeatherData(data));
+            })
+            .catch(() => {
+                dispatch(updateWeatherData({}));
+                dispatch(setErrorMessage('Could not fetch weather for your location'));
             });
     };
 }
