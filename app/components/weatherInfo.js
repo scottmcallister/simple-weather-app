@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react';
 import { Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import * as Progress from 'react-native-progress';
 import _ from 'lodash';
 import styles from '../styles';
 import utils from '../utils';
+
+const myIcon = (<Icon name="ios-sunny" style={styles.weatherIcon} size={30} color="#FFFFFF" />);
 
 const renderContent = weatherData =>
     (
@@ -15,6 +18,7 @@ const renderContent = weatherData =>
             <Text style={styles.weatherInfo}>{`${weatherData.name}`}</Text>
             <Text style={styles.weatherInfo}>{`${utils.toCelsius(weatherData.main.temp)} °C`}</Text>
             <Text style={styles.weatherInfo}>{`${weatherData.weather[0].description}`}</Text>
+            {myIcon}
           </View>
         }
       </View>

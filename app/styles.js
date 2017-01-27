@@ -56,6 +56,11 @@ const styles = StyleSheet.create({
     paddingBelow: {
         flex: 1,
     },
+    weatherIcon: {
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });
 
 export default styles;
