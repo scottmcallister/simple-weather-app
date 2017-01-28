@@ -6,7 +6,32 @@ import _ from 'lodash';
 import styles from '../styles';
 import utils from '../utils';
 
-const myIcon = (<Icon name="ios-sunny" style={styles.weatherIcon} size={30} color="#FFFFFF" />);
+const genIcon = (description) => {
+    let icon;
+    switch (description) {
+        case 'Haze':
+            icon = (<Icon name="ios-cloudy" style={styles.weatherIcon} size={40} color="#FFFFFF" />);
+            break;
+        case 'Snow':
+            icon = (<Icon name="ios-snow" style={styles.weatherIcon} size={40} color="#FFFFFF" />);
+            break;
+        case 'Clouds':
+            icon = (<Icon name="ios-cloudy" style={styles.weatherIcon} size={40} color="#FFFFFF" />);
+            break;
+        case 'Clear':
+            icon = (<Icon name="ios-sunny" style={styles.weatherIcon} size={40} color="#FFFFFF" />);
+            break;
+        case 'Rain':
+            icon = (<Icon name="ios-rainy" style={styles.weatherIcon} size={40} color="#FFFFFF" />);
+            break;
+        case 'Fog':
+            icon = (<Icon name="ios-partlysunny" style={styles.weatherIcon} size={40} color="#FFFFFF" />);
+            break;
+        default:
+            icon = (<Icon name="ios-sunny" style={styles.weatherIcon} size={40} color="#FFFFFF" />);
+    }
+    return icon;
+};
 
 const renderContent = weatherData =>
     (
@@ -17,8 +42,8 @@ const renderContent = weatherData =>
           <View>
             <Text style={styles.weatherInfo}>{`${weatherData.name}`}</Text>
             <Text style={styles.weatherInfo}>{`${utils.toCelsius(weatherData.main.temp)} °C`}</Text>
+            {genIcon(weatherData.weather[0].main)}
             <Text style={styles.weatherInfo}>{`${weatherData.weather[0].description}`}</Text>
-            {myIcon}
           </View>
         }
       </View>
@@ -37,7 +62,7 @@ const WeatherInfo = (props) => {
     return (
       <View style={styles.textContainer}>
         { isLoading ?
-          <Progress.Circle size={30} indeterminate /> :
+          <Progress.Circle size={40} color={'#FFFFFF'} indeterminate /> :
           stuff}
       </View>
     );
