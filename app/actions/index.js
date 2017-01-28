@@ -6,6 +6,7 @@ export const UPDATE_SEARCH_TERM = 'UPDATE_SEARCH_TERM';
 export const UPDATE_WEATHER_DATA = 'UPDATE_WEATHER_DATA';
 export const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE';
 export const SET_IS_LOADING = 'SET_IS_LOADING';
+export const SET_IS_FAHRENHEIT = 'SET_IS_FAHRENHEIT';
 
 /**
  * updateSearchTerm - set new search term
@@ -52,6 +53,18 @@ export function setIsLoading(isLoading) {
     return {
         type: SET_IS_LOADING,
         isLoading,
+    };
+}
+
+/**
+ * setIsFahrenheit - toggle between F and C temperatures
+ * @param {Boolean} isFahrenheit
+ * @return {object} Action
+ */
+export function setIsFahrenheit(isFahrenheit) {
+    return {
+        type: SET_IS_FAHRENHEIT,
+        isFahrenheit,
     };
 }
 

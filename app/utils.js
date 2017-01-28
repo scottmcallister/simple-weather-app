@@ -5,7 +5,7 @@ const utils = {
         return celsiusTemp;
     },
     toFahrenheit: (kelvinTemp) => {
-        let fahrenheitTemp = (kelvinTemp * (9 / 5)) + 459.67;
+        let fahrenheitTemp = ((9 / 5) * (kelvinTemp - 273)) + 32;
         fahrenheitTemp = Math.round(fahrenheitTemp);
         return fahrenheitTemp;
     },

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import WeatherInfo from '../components/weatherInfo';
 import SearchBox from '../components/searchBox';
+import Options from '../components/options';
 import styles from '../styles';
 import * as weatherActions from '../actions';
 
@@ -29,7 +30,7 @@ export class WeatherApp extends Component {
 
     render() {
         const { state, actions } = this.props;
-        const { weatherData, errorMessage, isLoading } = state;
+        const { weatherData, errorMessage, isLoading, isFahrenheit } = state;
         return (
           <View style={styles.container}>
             <SearchBox onComplete={actions.searchByCity} />
@@ -37,8 +38,13 @@ export class WeatherApp extends Component {
               weatherData={weatherData}
               errorMessage={errorMessage}
               isLoading={isLoading}
+              isFahrenheit={isFahrenheit}
             />
-            <View style={styles.paddingBelow} />
+            <Options
+              style={styles.options}
+              onValueChange={value => actions.setIsFahrenheit(value)}
+              isFahrenheit={isFahrenheit}
+            />
           </View>
         );
     }

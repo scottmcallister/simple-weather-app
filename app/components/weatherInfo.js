@@ -25,7 +25,7 @@ const genIcon = (description, sys) => {
             break;
         case 'Clear':
             icon = dayTime ?
-                (<Icon name="ios-sunny" style={styles.weatherIcon} size={40} color="#FFFFFF" />) :
+                (<Icon name="ios-sunny" style={styles.weatherIcon} size={40} color="#FFFF44" />) :
                 (<Icon name="ios-moon" style={styles.weatherIcon} size={40} color="#FFFFFF" />);
             break;
         case 'Rain':
@@ -40,7 +40,7 @@ const genIcon = (description, sys) => {
     return icon;
 };
 
-const renderContent = weatherData =>
+const renderContent = (weatherData, isFahrenheit) =>
     (
       <View>
         { _.isEmpty(weatherData) ?
@@ -48,7 +48,10 @@ const renderContent = weatherData =>
           :
           <View>
             <Text style={styles.weatherInfo}>{`${weatherData.name}`}</Text>
-            <Text style={styles.weatherInfo}>{`${utils.toCelsius(weatherData.main.temp)} °C`}</Text>
+            <Text style={styles.weatherInfo}>{
+                isFahrenheit ?
+                `${utils.toFahrenheit(weatherData.main.temp)} °F` :
+                `${utils.toCelsius(weatherData.main.temp)} °C`}</Text>
             {genIcon(weatherData.weather[0].main, weatherData.sys)}
             <Text style={styles.weatherInfo}>{`${weatherData.weather[0].description}`}</Text>
           </View>
@@ -64,8 +67,10 @@ const renderError = errorMessage =>
     );
 
 const WeatherInfo = (props) => {
-    const { weatherData, errorMessage, isLoading } = props;
-    const stuff = _.isEmpty(errorMessage) ? renderContent(weatherData) : renderError(errorMessage);
+    const { weatherData, isFahrenheit, errorMessage, isLoading } = props;
+    const stuff = _.isEmpty(errorMessage) ?
+        renderContent(weatherData, isFahrenheit) :
+        renderError(errorMessage);
     return (
       <View style={styles.textContainer}>
         { isLoading ?
@@ -79,6 +84,7 @@ WeatherInfo.propTypes = {
     weatherData: PropTypes.object.isRequired,
     errorMessage: PropTypes.string.isRequired,
     isLoading: PropTypes.bool.isRequired,
+    isFahrenheit: PropTypes.bool.isRequired,
 };
 
 export default WeatherInfo;

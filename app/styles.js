@@ -53,8 +53,13 @@ const styles = StyleSheet.create({
         fontSize: 20,
         margin: 10,
     },
-    paddingBelow: {
+    options: {
         flex: 1,
+    },
+    optionWrapper: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
     },
     weatherIcon: {
         textAlign: 'center',
