@@ -2,4 +2,6 @@
 
 A weather app built with React Native
 
-<img src="Weather.gif" >
+<p style="text-align: center;">
+<img src="Weather.gif" style="margin: auto;" >
+</p>
